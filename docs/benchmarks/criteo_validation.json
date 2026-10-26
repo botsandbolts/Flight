@@ -1,0 +1,10 @@
+{
+  "source": "https://huggingface.co/datasets/criteo/criteo-uplift/resolve/main/criteo-research-uplift-v2.1.csv.gz",
+  "rows_checked": 20000,
+  "treatment_counts": {
+    "1": 20000,
+    "0": 0
+  },
+  "status": "REJECTED",
+  "reason": "Prefix enthält keinen Kontrollarm. Kein Uplift-Modell darauf trainiert. Repräsentative Stichprobe aus vollständigen Daten erforderlich."
+}

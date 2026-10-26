@@ -1,43 +1,100 @@
-# ✈️ Flight – Kaufrausch & Kassensturz
+# ✈️ FLIGHT – Kaufrausch & Kassensturz
 
-Ein deutschsprachiges Streamlit-Portfolio von Amit Steinberg: Vom Kundenverhalten zum Deckungsbeitrag. Acht Kapitel erzählen eine zusammenhängende Geschichte mit interaktiven Entscheidungen, Humor und drei Erklärungsebenen: einfach, geschäftlich, technisch.
+**Anna sucht Kaffee. Der CFO sucht sein Geld.** Ein deutschsprachiges E-Commerce-Portfolio von Amit Steinberg.
 
-## Start
+![Projektposter](assets/flight_poster.jpg)
+
+## Direkt im Codespace starten
+
+Repository in GitHub Codespaces öffnen. Die Devcontainer-Konfiguration installiert die Basis- und ML-Abhängigkeiten, startet Streamlit und gibt Port **8501** frei. Falls nötig:
 
 ```bash
-pip install -r requirements.txt
-streamlit run app.py
+bash setup.sh
+bash start.sh
 ```
 
-Python 3.11 empfohlen. Kein GPU, API-Schlüssel oder Datendownload erforderlich. In GitHub Codespaces Port 8501 öffnen. Die Devcontainer-Konfiguration installiert Abhängigkeiten und startet die App. Für Streamlit Community Cloud dieses Repository und `app.py` auswählen; ein Deployment ist nicht Bestandteil dieses Commits.
+Für eine schlanke Installation genügt `bash setup.sh --base`. Die vollständige Codespace-Installation nutzt automatisch CPU-PyTorch. Bei manueller Einrichtung für die neuronalen Modelle zuerst die CPU-Version von PyTorch installieren, damit der Codespace keine unnötigen CUDA-Pakete lädt:
 
-## Kapitel
+```bash
+python -m pip install 'torch>=2.4,<3' --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -r requirements-ml.txt
+```
 
-1. Gewinnbrücke: Retouren, Rabatte, variable Kosten, Werbung.
-2. Annas Reise: interaktive Historie mit drei transparenten Empfehlungsheuristiken.
-3. Produktsuche mit Preisfilter; Erklärung von Text-, Bild- und generativen Modellen.
-4. Interaktiver Produktgraph mit Alternativen und Ergänzungen.
-5. Marketingpolitik mit bekannten synthetischen Treatment-Effekten und inkrementellem DB.
-6. Wechsel zwischen Kaufwahrscheinlichkeit, Umsatz und Deckungsbeitrag; CSV-Export.
-7. Difference-in-Differences und randomisierte A/B-Simulation mit Unsicherheit.
-8. Datenquellen, Status und Retailrocket-CSV-Vorschau/Validierung.
+## Oberfläche und Geschichte
 
-## Ehrlicher Modellstatus
+Die Startseite erzählt acht Kapitel in einfacher Sprache, mit Geschäftsterminologie, technischen Erklärungen und Humor. Die zusätzlichen Arbeitsbereiche führen tatsächliche Berechnungen aus:
 
-Version 0.1 ist ein interaktives Entscheidungslabor. BERT4Rec, SASRec, LightGCN, Sentence Transformers und CLIP sind erläuterte nächste Ausbaustufen, **keine bereits trainierten Modelle**. Empfehlungen sind Heuristiken, Suche nutzt Wortüberschneidung, Graphkanten sind redaktionell. Marketingeffekte und Produktdaten sind synthetisch. Keine empirischen Modellgüten oder gemessenen Geschäftseffekte werden behauptet.
+- **Trainingslabor:** Popularität, ItemKNN, Markov, kompakte BERT4Rec-/SASRec-artige Transformer und LightGCN mit Training und Testmetriken.
+- **Suchstudio:** TF-IDF, optional mehrsprachige Sentence Transformers und CLIP-Text-Bild-Retrieval aus hochgeladenen Katalogbildern.
+- **Marketinglabor:** T-Learner auf Criteo-Treatmentdaten, stratifizierter Train/Test-Split, IPW-Upliftkurve und AUUC oberhalb Zufall.
+- **Evidenzstudio:** ESCI-Kandidatenranking und Difference-in-Differences per OLS mit HC3- oder Cluster-Standardfehlern.
+- **Vorstellung:** Projektposter, sieben Folien, herunterladbare PowerPoint-Datei und gespeicherte Benchmarkprotokolle.
 
-Datensätze bleiben getrennte Benchmarks: Retailrocket, Amazon-M2, REES46, Amazon Reviews 2023, Amazon ESCI. Links im Dashboard. Nutzungsbedingungen/Zugang vor Import prüfen. Die vorhandenen Shopdaten belegen keine kausalen Rabatteffekte. Dafür ein geeignetes Treatment-/Kontroll-Dataset separat auswählen.
+Story-Simulationen bleiben ausdrücklich als solche gekennzeichnet. Keine KI-Methode bekommt Ergebnisse zugeschrieben, die eine Heuristik berechnet hat.
 
-## Finanzielle Definitionen
+## Öffentliche Datenquellen
 
-Nettowerte ohne Umsatzsteuer. In Kapitel 1: Erlös nach Rabatt/Retouren minus Wareneinsatz verkaufter Ware minus Abwicklung/Retourenkosten minus Werbung. Retournierte Ware wird als wiederverkaufbar angenommen. Fixkosten fehlen. DB nach Marketing ist kein Unternehmensgewinn. Kapitel 5: zusätzlicher DB = (p1-p0) × 40 € − p1 × Rabatt − Kontaktkosten. Kapitel 6: erwarteter DB pro Produktexposition unter synthetischer Kaufwahrscheinlichkeit, ohne Werbekosten.
+Datensätze bleiben getrennte Aufgaben. Keine gemeinsame Kundenidentität wird erfunden. Rohdaten sind nicht im Repository enthalten. Externe Datenlizenzen gelten unabhängig vom Projektcode.
 
-## Nächste technische Meilensteine
+| Quelle | Eingabe | Aufgabe |
+| --- | --- | --- |
+| [Retailrocket](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset) | events.csv: timestamp, visitorid, itemid, event | Zeitliche Empfehlungen |
+| [REES46](https://rees46.com/en/datasets) | event_time, user_id, product_id, event_type | Zeitliche Empfehlungen |
+| [Amazon-M2](https://github.com/HaitaoMao/Amazon-M2-Session-Recommendation) | prev_items, next_item, locale | Separater Session-Holdout |
+| [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) | JSONL mit user_id, parent_asin, timestamp | Rezensionen als Interaktionsproxy |
+| [Amazon ESCI](https://github.com/amazon-science/esci-data) | query_id, query, product_title, esci_label | Suchrelevanz E/S/C/I |
+| [Criteo Uplift](https://huggingface.co/datasets/criteo/criteo-uplift) | f0–f11, treatment, conversion | Marketing-Uplift, CC-BY-NC-SA-4.0 |
 
-- Retailrocket-Pipeline mit chronologischem Split und reproduzierbaren Popularitäts-/Item-KNN-Benchmarks.
-- SASRec/BERT4Rec auf Amazon-M2; Recall/NDCG, kurze Sessions, kalte Artikel, Laufzeit.
-- Sentence Transformers/CLIP-Retrieval mit echten Produktmetadaten und Bildern.
-- LightGCN und hybrider Ranker, echte Messwerte statt Demo-Scores.
-- Separater randomisierter Uplift-Benchmark und Policy Evaluation.
+Reviews sind keine vollständigen Käufe oder Klicks. Criteo wurde nichtuniform subsampelt und erlaubt keine Rekonstruktion der ursprünglichen Geschäftswirkung. Ein Datei-Präfix kann ausschließlich Treatment enthalten: Das Training bricht ohne beide Arme/Outcomes ab. Für aussagekräftige Resultate vollständige geeignete Daten verwenden, dann repräsentativ sampeln. Das optionale Fetch-Skript nimmt ein Präfix und dient nur dem Schema-/Zugangstest.
 
-Kein Bild wird an externe APIs gesendet. Uploads werden nur im Streamlit-Prozess verarbeitet; Datenschutz/Hosting vor öffentlicher Nutzung konfigurieren.
+## Reproduzierbare Experimente
+
+```bash
+# Alle sechs Modelle: künstlicher Funktionstest, eine Epoche
+python -m flightlab.cli --models Popularität ItemKNN Markov BERT4Rec SASRec LightGCN --epochs 1
+
+# Echtes Retailrocket-Experiment
+python -m flightlab.cli --input data/events.csv --source Retailrocket --limit 100000 --cases 300
+
+# REES46
+python -m flightlab.cli --input data/2019-Oct.csv --source REES46 --limit 100000
+
+# Amazon-Rezensionen
+python -m flightlab.cli --input data/reviews.jsonl --source 'Amazon Reviews 2023' --limit 100000
+
+# Optional: kleine öffentliche Präfixe für Zugang und Schema laden
+python -m pip install -r requirements-data.txt
+python -m flightlab.fetch reviews --category All_Beauty --rows 20000 --out data/reviews.jsonl
+python -m flightlab.fetch criteo --rows 20000 --out data/criteo.csv
+
+# Tests
+python -m unittest discover -s tests -v
+```
+
+Die CLI exportiert JSON-Protokolle und eigene Modellartefakte (JSON/NPZ, Torch state_dict). Keine fremden Pickle-Uploads laden. Große Daten/Modelle bleiben aus Git ausgeschlossen.
+
+### Messprotokoll
+
+Globaler zeitlicher 80/20-Split für Ereignisdaten. Vokabular, Graph und Modellparameter stammen aus Training. Testfälle laufen vorwärts mit inzwischen beobachteter Historie, ohne erneutes Fitten. Vollständiger Trainingskatalog, keine zufällig gesampelten Negativkandidaten. Wiederholte Artikel bleiben erlaubt. Kalte Zielartikel werden gezählt und aus warmen Recall/NDCG ausgeschlossen. Die ersten begrenzten Testfälle sind keine repräsentative Stichprobe. Amazon-M2 verwendet einen ausdrücklich nichtzeitlichen Session-Holdout und keinen offiziellen Challenge-Split.
+
+### Modellgrenzen
+
+Die neuronalen Modelle sind kompakte, eigenständige Implementierungen zur Portfolio-Demonstration. BERT nutzt Einzelmaskenrekonstruktion. SAS nutzt kausale Attention und nächste Artikel. LightGCN lernt mit BPR auf einem User-Item-Graphen; die Sessioninferenz mittelt Itemvektoren. Keine Behauptung einer paper-exakten Reproduktion oder Produktionsskalierung. Vollkatalog-Softmax und Auswertung sind für kleine bis mittlere Teilmengen gedacht. Hyperparameter nur auf einem zusätzlichen Validierungssplit auswählen, nicht auf den hier berichteten Testfällen.
+
+## Deckungsbeitrag
+
+Nettowerte ohne Umsatzsteuer. Erlös nach Rabatt/Retouren minus Wareneinsatz verkaufter Ware minus variable Abwicklung/Retourenkosten minus Werbung. Retourenware gilt im Szenario als wiederverkaufbar. Fixkosten fehlen. DB ist kein Unternehmensgewinn. Inkrementeller DB der Marketing-Simulation: `(p1-p0) × 40 € − p1 × Rabatt − Kontaktkosten`. Alle Kosteneingaben sind sichtbare Annahmen.
+
+## Struktur
+
+```text
+app.py                  Deutsche Story mit acht Kapiteln
+pages/                  Training, Suche, Marketing, Ökonometrie, Präsentation
+flightlab/              Datenadapter, Baselines, neuronale Modelle, Evaluation
+assets/                 Projektposter, Präsentation und Folien
+artifacts/              Lokale Laufprotokolle und Modelle, nicht versioniert
+docs/benchmarks/        Ausgewählte ausgeführte und eingeordnete Protokolle
+tests/                  GUI-, Daten-, Metrik- und Modellprüfungen
+```
+
+API-Schlüssel sind nicht erforderlich. Sentence Transformers/CLIP laden öffentliche Gewichte beim ersten Aufruf. Die App sendet Uploads nicht an eine Inferenz-API. Verarbeitung und Hosting sind im Betrieb dennoch datenschutzrechtlich zu prüfen. Für eine öffentliche Demo nur geeignete öffentliche oder künstliche Daten verwenden.

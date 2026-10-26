@@ -1,20 +1,14 @@
-# Veröffentlichung auf Streamlit Community Cloud
+# GitHub Codespaces und Streamlit
 
-Die App wird unmittelbar aus GitHub bereitgestellt. Ein Codespace ist nicht erforderlich.
+Aktuelles Ziel: GitHub Codespaces als Python-Laufzeit und Streamlit auf Port 8501.
 
-## Zielkonfiguration
+1. Codespace für botsandbolts/Flight öffnen.
+2. Devcontainer installiert Basis- und ML-Abhängigkeiten über setup.sh und startet die App automatisch.
+3. Unter Ports den Port 8501 öffnen. Die Oberfläche enthält die Story und fünf Arbeitsbereiche.
+4. Neuronale Abhängigkeiten bei Bedarf installieren: zuerst PyTorch vom CPU-Index, dann requirements-ml.txt. Befehle in README.md.
 
-- Repository: `botsandbolts/Flight`
-- Branch: `main`
-- Main file path: `app.py`
-- Python: `3.11`
-- Abhängigkeiten: `requirements.txt`
-- API-Schlüssel: keine für Version 0.1
+Manueller Start: `bash start.sh`. Protokoll beim automatischen Start: `/tmp/flight-streamlit.log`.
 
-## Veröffentlichung
+Ein gestoppter Codespace betreibt keine App. Ein öffentlich freigegebener Port macht Uploads und Ressourcen anderen zugänglich. Standardmäßig keine Geheimnisse oder privaten Kundendaten in der Demo verwenden.
 
-In Streamlit Community Cloud anmelden, eine App aus dem vorhandenen GitHub-Repository erstellen und die Zielkonfiguration auswählen. Nach erfolgreichem Build die tatsächlich zugewiesene App-URL verwenden. Es wird keine noch nicht bestätigte URL behauptet.
-
-Updates auf dem gewählten Branch werden von Community Cloud übernommen. Die GitHub-Prüfung testet alle acht Kapitel und zentrale Interaktionen. Der erste vollständige Modelldatenbestand und trainierte Transformer sind noch nicht enthalten; der Status steht im Dashboard.
-
-Für größere Modelle Training und Artefakterzeugung getrennt vom interaktiven Webprozess durchführen. Nur kompakte geprüfte Inferenzartefakte laden. Keine privaten Kundendaten oder Geheimnisse ins öffentliche Repository schreiben.
+Optional später Community Cloud: Repository botsandbolts/Flight, Branch main, app.py, Python 3.11. Basisanforderungen reichen für Story und klassische Modelle. Große Trainingsläufe separat ausführen. Diese Version behauptet keine bereits veröffentlichte Cloud-URL.

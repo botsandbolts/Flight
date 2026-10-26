@@ -1,0 +1,84 @@
+{
+  "source": "Amazon Reviews 2023",
+  "fingerprint": "ef7a3e5f9ecade5ac2b76fc7ea9c412ce4552c7d3f3777dcb59b62b7e5d85b59",
+  "rows": 39896,
+  "train_rows": 31916,
+  "test_rows": 7980,
+  "cutoff": "2021-04-09 14:02:54.722000+00:00",
+  "protocol": "globaler Zeitsplit 80/20; erste max_cases vorwärts ausgewertet; Vollkatalog des Trainings; wiederholte Artikel erlaubt; kalte Ziele separat ausgeschlossen",
+  "max_cases": 100,
+  "k": 10,
+  "seed": 42,
+  "python": "3.12.14",
+  "results": [
+    {
+      "Modell": "Popularität",
+      "Recall@10": 0.0,
+      "NDCG@10": 0.0,
+      "eligible_cases": 31,
+      "cold_targets": 69,
+      "catalog_size": 16610,
+      "coverage": 0.0006020469596628537,
+      "training_seconds": 0.021984674999657727,
+      "evaluation_seconds": 0.041958795999562426
+    },
+    {
+      "Modell": "ItemKNN",
+      "Recall@10": 0.0,
+      "NDCG@10": 0.0,
+      "eligible_cases": 31,
+      "cold_targets": 69,
+      "catalog_size": 16610,
+      "coverage": 0.01041541240216737,
+      "training_seconds": 0.04359121400011645,
+      "evaluation_seconds": 0.049931637000554474
+    },
+    {
+      "Modell": "Markov",
+      "Recall@10": 0.0,
+      "NDCG@10": 0.0,
+      "eligible_cases": 31,
+      "cold_targets": 69,
+      "catalog_size": 16610,
+      "coverage": 0.0015653220951234196,
+      "training_seconds": 0.11440040700017562,
+      "evaluation_seconds": 0.054657037999277236
+    },
+    {
+      "Modell": "BERT4Rec",
+      "Recall@10": 0.0,
+      "NDCG@10": 0.0,
+      "eligible_cases": 31,
+      "cold_targets": 69,
+      "catalog_size": 16610,
+      "coverage": 0.004635761589403974,
+      "training_seconds": 22.10162637800022,
+      "evaluation_seconds": 0.18847140700017917
+    },
+    {
+      "Modell": "SASRec",
+      "Recall@10": 0.0,
+      "NDCG@10": 0.0,
+      "eligible_cases": 31,
+      "cold_targets": 69,
+      "catalog_size": 16610,
+      "coverage": 0.004996989765201686,
+      "training_seconds": 21.175312859999394,
+      "evaluation_seconds": 0.1820073360004244
+    },
+    {
+      "Modell": "LightGCN",
+      "Recall@10": 0.0,
+      "NDCG@10": 0.0,
+      "eligible_cases": 31,
+      "cold_targets": 69,
+      "catalog_size": 16610,
+      "coverage": 0.010054184226369656,
+      "training_seconds": 4.9158584839997275,
+      "evaluation_seconds": 0.1248658760005128
+    }
+  ],
+  "sampling": "Erste 40000 Zeilen All_Beauty JSONL. Kategorie-/Dateipräfix, nicht repräsentativ.",
+  "source_url": "https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/tree/main/raw/review_categories",
+  "epochs": 1
+}

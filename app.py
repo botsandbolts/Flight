@@ -1,4 +1,5 @@
 """Commerce Flight Deck: German interactive commerce decision laboratory."""
+from pathlib import Path
 import io
 import json
 import numpy as np
@@ -57,6 +58,9 @@ with st.sidebar:
  st.caption('Entwickelt als Portfolio von Amit Steinberg')
 
 idx=CHAPTERS.index(chapter)
+if idx==0 and (Path(__file__).parent/'assets/flight_poster.jpg').exists():
+ st.image(str(Path(__file__).parent/'assets/flight_poster.jpg'),width='stretch')
+st.caption('Weitere Arbeitsbereiche in der Seitennavigation: Trainingslabor · Suchstudio · Marketinglabor · Evidenzstudio. Die folgenden Story-Kapitel bleiben nachvollziehbare Simulationen.')
 st.progress((idx+1)/len(CHAPTERS),text=f'Kapitel {idx+1} von 8 · Vom Klick zum belastbaren Geschäftsmodell')
 st.markdown('<div class="hero"><div class="eyebrow">COMMERCE FLIGHT DECK / KAUFRAUSCH & KASSENSTURZ</div><h1>'+chapter.split(' · ')[1]+'</h1><p>Anna sucht Kaffee. Das Marketing sucht Wachstum. Der CFO sucht sein Geld. Du bringst die drei zusammen.</p></div>',unsafe_allow_html=True)
 
@@ -209,9 +213,9 @@ else:
      st.bar_chart(clean.event.value_counts());st.write('Besucher in dieser Teilmenge:',clean.visitorid.nunique());st.caption('Teilmenge in Dateireihenfolge, keine repräsentative Stichprobe. Nur Schema-/Werteprüfung, keine vollständige Qualitäts- oder Leakage-Prüfung.')
   except (ValueError,pd.errors.ParserError,UnicodeDecodeError) as e:st.error('Datei konnte nicht als Retailrocket-CSV gelesen werden: '+str(e))
  st.write('#### Was läuft – und was ist die nächste Ausbaustufe?')
- st.dataframe(pd.DataFrame([['Finanzen / Marketing / Experimente','Interaktive, deterministische oder stochastische Simulation'],['Empfehlung / Suche','Regelbasierte Baselines und Wortabgleich'],['Graph','Redaktioneller Beispielgraph'],['Retailrocket','CSV-Vorschau und Validierung'],['BERT4Rec / SASRec / LightGCN','Nicht trainiert; geplante Benchmarks'],['Sentence Transformers / CLIP','Nicht geladen; Architektur erläutert'],['Uplift-Schätzung','Nicht trainiert; Oracle-Simulation statt Modellbeweis']],columns=['Bereich','Status']),hide_index=True)
+ st.dataframe(pd.DataFrame([['Finanzen / Marketing / Experimente','Interaktive, deterministische oder stochastische Simulation'],['Empfehlung / Suche','Regelbasierte Baselines und Wortabgleich'],['Graph','Redaktioneller Beispielgraph'],['Retailrocket','CSV-Vorschau und Validierung'],['BERT4Rec / SASRec / LightGCN','Trainierbare kompakte Implementierungen im Trainingslabor; hier keine geladenen Modelle'],['Sentence Transformers / CLIP','Optional ausführbar im Suchstudio; benötigt Modell-Download'],['Uplift-Schätzung','T-Learner im Marketinglabor; diese Story nutzt Oracle-Simulation']],columns=['Bereich','Status']),hide_index=True)
  st.write('**Benchmark-Regeln:** Zeitbasierter Split; Trainingstransformationen nur auf Trainingsdaten anpassen; Recall@20 und NDCG@10; Kandidatenprotokoll dokumentieren; neue Artikel und kurze Sessions separat; Laufzeit und Ressourcen berichten. Keine frei erfundenen Scores.')
  st.code('streamlit run app.py',language='bash')
 
 st.divider()
-st.caption('FLIGHT · Portfolio von Amit Steinberg · Demo-Version 0.1 · Alle angezeigten Shopdaten, Margen und Effekte sind synthetisch, außer ausdrücklich als hochgeladene Daten ausgewiesen.')
+st.caption('FLIGHT · Portfolio von Amit Steinberg · Projekt-Version 0.2 · Alle angezeigten Shopdaten, Margen und Effekte sind synthetisch, außer ausdrücklich als hochgeladene Daten ausgewiesen.')

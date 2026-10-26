@@ -1,0 +1,82 @@
+{
+  "source": "SYNTHETISCH",
+  "fingerprint": "748f218221d9e769eaf09c1444b72ae9d30b9190bac1222310b8693fd1cd4e7f",
+  "rows": 1800,
+  "train_rows": 1440,
+  "test_rows": 360,
+  "cutoff": "2025-03-02 00:00:00+00:00",
+  "protocol": "globaler Zeitsplit 80/20; erste max_cases vorwärts ausgewertet; Vollkatalog des Trainings; wiederholte Artikel erlaubt; kalte Ziele separat ausgeschlossen",
+  "max_cases": 50,
+  "k": 10,
+  "seed": 42,
+  "epochs": 1,
+  "python": "3.12.14",
+  "results": [
+    {
+      "Modell": "Popularität",
+      "Recall@10": 0.8,
+      "NDCG@10": 0.278408134694468,
+      "eligible_cases": 50,
+      "cold_targets": 0,
+      "catalog_size": 32,
+      "coverage": 0.3125,
+      "training_seconds": 0.00018561900014901767,
+      "evaluation_seconds": 0.00041350100036652293
+    },
+    {
+      "Modell": "ItemKNN",
+      "Recall@10": 0.8,
+      "NDCG@10": 0.37837245494051375,
+      "eligible_cases": 50,
+      "cold_targets": 0,
+      "catalog_size": 32,
+      "coverage": 1.0,
+      "training_seconds": 0.0011438589999670512,
+      "evaluation_seconds": 0.005443368999294762
+    },
+    {
+      "Modell": "Markov",
+      "Recall@10": 0.78,
+      "NDCG@10": 0.7145038307558993,
+      "eligible_cases": 50,
+      "cold_targets": 0,
+      "catalog_size": 32,
+      "coverage": 0.8125,
+      "training_seconds": 0.0003801709999606828,
+      "evaluation_seconds": 0.0005504669998117606
+    },
+    {
+      "Modell": "BERT4Rec",
+      "Recall@10": 0.78,
+      "NDCG@10": 0.3569747597691555,
+      "eligible_cases": 50,
+      "cold_targets": 0,
+      "catalog_size": 32,
+      "coverage": 0.53125,
+      "training_seconds": 1.1886950099997193,
+      "evaluation_seconds": 0.017088596000576217
+    },
+    {
+      "Modell": "SASRec",
+      "Recall@10": 0.72,
+      "NDCG@10": 0.6432529941971865,
+      "eligible_cases": 50,
+      "cold_targets": 0,
+      "catalog_size": 32,
+      "coverage": 0.875,
+      "training_seconds": 0.3991557580002336,
+      "evaluation_seconds": 0.02546895700015739
+    },
+    {
+      "Modell": "LightGCN",
+      "Recall@10": 0.8,
+      "NDCG@10": 0.346281849622464,
+      "eligible_cases": 50,
+      "cold_targets": 0,
+      "catalog_size": 32,
+      "coverage": 1.0,
+      "training_seconds": 0.017196859999785374,
+      "evaluation_seconds": 0.001037478999933228
+    }
+  ]
+}

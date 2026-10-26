@@ -28,7 +28,7 @@ Die Startseite erzählt acht Kapitel in einfacher Sprache, mit Geschäftstermino
 - **Suchstudio:** TF-IDF, optional mehrsprachige Sentence Transformers und CLIP-Text-Bild-Retrieval aus hochgeladenen Katalogbildern.
 - **Marketinglabor:** T-Learner auf Criteo-Treatmentdaten, stratifizierter Train/Test-Split, IPW-Upliftkurve und AUUC oberhalb Zufall.
 - **Evidenzstudio:** ESCI-Kandidatenranking und Difference-in-Differences per OLS mit HC3- oder Cluster-Standardfehlern.
-- **Vorstellung:** Projektposter, sieben Folien, herunterladbare PowerPoint-Datei und gespeicherte Benchmarkprotokolle.
+- **Vorstellung:** Projektposter, 15 Folien, herunterladbare PowerPoint-Datei und gespeicherte Benchmarkprotokolle.
 
 Story-Simulationen bleiben ausdrücklich als solche gekennzeichnet. Keine KI-Methode bekommt Ergebnisse zugeschrieben, die eine Heuristik berechnet hat.
 
@@ -88,7 +88,7 @@ Nettowerte ohne Umsatzsteuer. Erlös nach Rabatt/Retouren minus Wareneinsatz ver
 ## Struktur
 
 ```text
-app.py                  Deutsche Story mit acht Kapiteln
+app.py                  Deutsche Story mit acht Kapiteln und zwölf zusätzlichen Unternehmensgeschichten
 pages/                  Training, Suche, Marketing, Ökonometrie, Präsentation
 flightlab/              Datenadapter, Baselines, neuronale Modelle, Evaluation
 assets/                 Projektposter, Präsentation und Folien
@@ -98,3 +98,19 @@ tests/                  GUI-, Daten-, Metrik- und Modellprüfungen
 ```
 
 API-Schlüssel sind nicht erforderlich. Sentence Transformers/CLIP laden öffentliche Gewichte beim ersten Aufruf. Die App sendet Uploads nicht an eine Inferenz-API. Verarbeitung und Hosting sind im Betrieb dennoch datenschutzrechtlich zu prüfen. Für eine öffentliche Demo nur geeignete öffentliche oder künstliche Daten verwenden.
+
+
+## Staffel 2: KI im Unternehmen
+
+Zwölf Episoden verbinden konkrete Geschäftsprobleme mit Verantwortlichen, Datenbedarf und Erfolgsmessung. Vier neue Arbeitsbereiche:
+
+- **KI im Unternehmen:** Einkauf, Service, CRM, Content, Pricing, Recht, Wissensmanagement und Führung. Begriffe AI/KI, generative KI, Copilot, Agent, Workflow und RAG auf drei Erklärungsebenen.
+- **Agenten-Kommandozentrale:** Fester lokaler Ablauf mit realen DB-/Meldebestand-Rechnungen, Handbuch-Retrieval und Entscheidungsprotokoll. Kein autonomer LLM-Agent und keine externen Aktionen.
+- **Wissens- und Contentstudio:** Suche in einem synthetischen Handbuch und nachvollziehbare Marketingvorlagen. Keine erfundenen Produktclaims.
+- **KI-Business-Case:** Nutzungsquote, Prüfzeit, realisierter Zeitwert, Tokenkosten, Betreuung und Amortisation mit sichtbaren Annahmen.
+
+### Optionale Modellanbindungen
+
+OpenAI Responses API und Anthropic Messages API können einen Entwurf aus dem sichtbaren Szenarioprotokoll erzeugen. Die Adapter werden nur auf ausdrücklichen Klick nach Auswahl von Anbieter und Modell-ID aufgerufen. Schlüssel gehören in Codespace-Secrets als `OPENAI_API_KEY` beziehungsweise `ANTHROPIC_API_KEY`, niemals ins Repository. Diese externen API-Wege wurden ohne Schlüssel nicht live getestet. ChatGPT/Claude-Abonnements und API-Abrechnung sind getrennte Zugänge. Keine pauschale Qualitätsrangliste der Anbieter. Gemini und lokale Modelle werden als Optionen erläutert, sind aber nicht implementiert.
+
+Quellen: [OpenAI Tools](https://developers.openai.com/api/docs/guides/tools), [Anthropic Tool Use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works).

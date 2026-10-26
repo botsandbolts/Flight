@@ -7,5 +7,5 @@ class PageTests(unittest.TestCase):
    with self.subTest(page=p.name):
     a=AppTest.from_file(str(p),default_timeout=30).run()
     self.assertEqual(len(a.exception),0)
-    if p.name.startswith(('1_','2_')):
+    if p.name.startswith(('1_','2_','7_','8_')):
      a.button[0].click().run();self.assertEqual(len(a.exception),0)

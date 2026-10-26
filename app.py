@@ -60,7 +60,7 @@ with st.sidebar:
 idx=CHAPTERS.index(chapter)
 if idx==0 and (Path(__file__).parent/'assets/flight_poster.jpg').exists():
  st.image(str(Path(__file__).parent/'assets/flight_poster.jpg'),width='stretch')
-st.caption('Weitere Arbeitsbereiche in der Seitennavigation: Trainingslabor · Suchstudio · Marketinglabor · Evidenzstudio. Die folgenden Story-Kapitel bleiben nachvollziehbare Simulationen.')
+st.caption('Weitere Arbeitsbereiche in der Seitennavigation: Trainingslabor · Suchstudio · Marketinglabor · Evidenzstudio. Neu: KI im Unternehmen · Agenten-Kommandozentrale · Wissen & Content · KI-Business-Case. Die folgenden Story-Kapitel bleiben nachvollziehbare Simulationen.')
 st.progress((idx+1)/len(CHAPTERS),text=f'Kapitel {idx+1} von 8 · Vom Klick zum belastbaren Geschäftsmodell')
 st.markdown('<div class="hero"><div class="eyebrow">COMMERCE FLIGHT DECK / KAUFRAUSCH & KASSENSTURZ</div><h1>'+chapter.split(' · ')[1]+'</h1><p>Anna sucht Kaffee. Das Marketing sucht Wachstum. Der CFO sucht sein Geld. Du bringst die drei zusammen.</p></div>',unsafe_allow_html=True)
 

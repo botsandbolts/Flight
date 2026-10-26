@@ -19,3 +19,5 @@ for path in sorted((root/'docs/benchmarks').glob('*.json')):
   if 'results' in report:st.dataframe(pd.DataFrame(report['results']),hide_index=True)
   st.json({k:v for k,v in report.items() if k!='results'})
 st.caption('Kompakte Entwicklungsbenchmarks ersetzen weder Vollskalentraining noch ein Onlineexperiment. Das Projekt zeigt Code, Prüfungen und Grenzen gemeinsam.')
+
+st.info('Neu: zwölf Unternehmensgeschichten und vier Arbeitsbereiche für KI, Agenten, Wissensarbeit und den Business Case. Die Szenarien ergänzen die ML-Labore.')

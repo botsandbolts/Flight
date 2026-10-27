@@ -38,8 +38,8 @@ st.write(STEPS[idx][1])
 if idx==0:
  image=ROOT/'assets/story_hero.jpg'
  if image.exists():st.image(str(image),width='stretch')
- st.subheader('Anna möchte eine kleine Kaffeemaschine kaufen.')
- st.write('Sie hat wenig Platz in der Küche und höchstens 150 € Budget. Der Shop möchte ihr helfen und dabei wirtschaftlich arbeiten. An diesem einen Einkauf erklären wir, wo Daten, maschinelles Lernen und Sprachmodelle nützlich sind.')
+ st.subheader('Anna kauft eine Kaffeemaschine im Onlineshop.')
+ st.write('Sie sitzt zu Hause vor ihrem Laptop und hat wenig Platz in der Küche und höchstens 150 € Budget. Der Shop möchte ihr helfen und dabei wirtschaftlich arbeiten. An diesem einen Einkauf erklären wir, wo Daten, maschinelles Lernen und Sprachmodelle nützlich sind.')
  st.write('**Du begleitest sechs Entscheidungen:**')
  st.dataframe(pd.DataFrame([
   ['Finden','Welches Produkt passt zu Annas Wunsch?'],
@@ -198,6 +198,9 @@ else:
  st.page_link('pages/9_KI_Business_Case.py',label='Den wirtschaftlichen Nutzen eines KI-Piloten durchrechnen')
  with st.expander('Alle vertiefenden Werkzeuge'):
   workspace_links()
+
+from flightlab.advanced import render as render_advanced
+render_advanced(idx)
 
 st.divider()
 left,right=st.columns(2)

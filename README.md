@@ -122,3 +122,11 @@ Zwölf optionale Fallkarten vertiefen Geschäftsprobleme anderer Abteilungen. Si
 OpenAI Responses API und Anthropic Messages API können einen Entwurf aus dem sichtbaren Szenarioprotokoll erzeugen. Die Adapter werden nur auf ausdrücklichen Klick nach Auswahl von Anbieter und Modell-ID aufgerufen. Schlüssel gehören in Codespace-Secrets als `OPENAI_API_KEY` beziehungsweise `ANTHROPIC_API_KEY`, niemals ins Repository. Diese externen API-Wege wurden ohne Schlüssel nicht live getestet. ChatGPT/Claude-Abonnements und API-Abrechnung sind getrennte Zugänge. Keine pauschale Qualitätsrangliste der Anbieter. Gemini und lokale Modelle werden als Optionen erläutert, sind aber nicht implementiert.
 
 Quellen: [OpenAI Tools](https://developers.openai.com/api/docs/guides/tools), [Anthropic Tool Use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works).
+
+## Business- und Technologie-Vertiefung unter jedem Kapitel
+
+Die acht Story-Kapitel enthalten direkt darunter eine fortgeschrittene Darstellung: Funnel, TF-IDF-Kosinusmatrix und SVD, explizite kausale Toy-Attention, bipartiter Beispielgraph, DB-Sensitivitätsfläche, künstliche Uplift-Population, Bestands-Monte-Carlo und Unsicherheitsintervalle. Jede Grafik benennt Geschäftsfrage, Methode, Messung und Evidenzstatus. Anna kauft zu Hause online.
+
+Die vollständige PDF liegt unter `assets/FLIGHT_Amit_Steinberg_Oktober_2026.pdf` und ist in der App herunterladbar. Autor: Amit Steinberg, Hamburg, Oktober 2026. Das vom Autor bereitgestellte Porträt ist auf dem Titel eingebunden. PDF-Neuerstellung: `pip install -r requirements-pdf.txt`, dann `python presentation_src/build_pdf.py`. Das Skript nutzt DejaVu Sans aus `/usr/share/fonts/truetype/dejavu/`; diese Fonts gegebenenfalls zuerst installieren.
+
+Die Visualisierungen sind keine Behauptung besserer Modellgüte. Sentence Transformers/CLIP sind optional ausführbar, neuronale Recommender sind trainierbar, autonome Agenten und SHAP-Produktionsexplainer werden nicht als implementiert ausgegeben.

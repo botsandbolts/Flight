@@ -3,28 +3,17 @@ import json
 import pandas as pd
 import streamlit as st
 from flightlab.ui import lab_header
-st.set_page_config(page_title='Flight · Folien und Nachweise',layout='wide')
-lab_header('Die Geschichte als Präsentation',
- 'Die Folien erzählen denselben Einkauf wie die Hauptansicht. Erst kommen die Entscheidungen, dann die Methoden und Daten im Anhang.',
- 'Eine geführte Präsentation und getrennte Nachweise zum tatsächlichen Projektstand.',
- 'Schritt 8 · Was Flight tatsächlich zeigt')
+st.set_page_config(page_title='Flight · Vollständige Präsentation',layout='wide')
+lab_header('Business und Data Science: die vollständige Präsentation','Anna kauft online. Die acht Kapitel verbinden Entscheidungen mit technischen Demonstrationen und fortgeschrittenen Grafiken.','Die ausführliche PDF mit Methoden, Projektarchitektur, Quellen und Evidenzstatus.','Alle acht Kapitel')
 root=Path(__file__).resolve().parents[1]
-meta=root/'docs/presentation.json'
-content=json.loads(meta.read_text()) if meta.exists() else {'slides':[]}
-slides=sorted((root/'assets/slides').glob('*.jpg'))
-if slides:
- labels=[f'{i+1:02} · '+(content['slides'][i]['title'] if i<len(content['slides']) else f'Folie {i+1}') for i in range(len(slides))]
- selected=st.selectbox('Folie auswählen',labels)
- number=labels.index(selected)
- st.image(str(slides[number]),width='stretch')
- if number<len(content['slides']):st.write('**Worauf es hier ankommt:** '+content['slides'][number]['takeaway'])
- deck=root/'assets/FLIGHT_Praesentation.pptx'
- if deck.exists():st.download_button('Die gesamte Präsentation herunterladen',deck.read_bytes(),deck.name,'application/vnd.openxmlformats-officedocument.presentationml.presentation')
-st.divider();st.subheader('Was die bisherigen Versuche belegen')
-st.write('Die Codepfade laufen in lokalen Tests. Der kleine Amazon-Test hat noch keinen brauchbaren Empfehlungsgewinn gezeigt. Ein ungeeignetes Criteo-Dateipräfix wurde wegen fehlender Kontrollgruppe vor dem Training zurückgewiesen. Ein Geschäftseffekt ist damit nicht nachgewiesen.')
+pdf=root/'assets/FLIGHT_Amit_Steinberg_Oktober_2026.pdf'
+if pdf.exists():
+ st.download_button('Vollständige PDF-Präsentation herunterladen',pdf.read_bytes(),pdf.name,'application/pdf',type='primary')
+meta=root/'docs/pdf_manifest.json'
+if meta.exists():
+ data=json.loads(meta.read_text());st.write('**Amit Steinberg · Hamburg · Oktober 2026**')
+ st.dataframe(pd.DataFrame({'Seite':range(1,len(data['pages'])+1),'Inhalt':data['pages']}),hide_index=True,width='stretch')
+st.subheader('Echte Projektnachweise')
+st.write('Die Grafiken unterscheiden Lehrrechnungen, synthetische Daten, trainierbare Implementierungen und gemessene Resultate. Ein kommerzieller Effekt ist bislang nicht nachgewiesen.')
 for path in sorted((root/'docs/benchmarks').glob('*.json')):
- with st.expander('Messprotokoll: '+path.stem):
-  report=json.loads(path.read_text())
-  if 'results' in report:st.dataframe(pd.DataFrame(report['results']),hide_index=True,width='stretch')
-  st.json({k:v for k,v in report.items() if k!='results'})
-st.caption('Die Story nutzt fiktive Annahmen. Diese Messprotokolle dokumentieren davon getrennte Entwicklungstests.')
+ with st.expander('Messprotokoll: '+path.stem):st.json(json.loads(path.read_text()))

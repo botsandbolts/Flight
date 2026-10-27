@@ -15,9 +15,10 @@ class RenderingTests(unittest.TestCase):
    # Recreate the notebook-like setting that previously exposed DeltaGenerator.
    config.set_option('magic.displayLastExprIfNoSemicolon',True)
    config.set_option('runner.magicEnabled',settings['runner']['magicEnabled'])
-   for path,expected in [('app.py','Umsatz ist das Geld'),('pages/6_KI_im_Unternehmen.py','Er zerlegt die Rechnung')]:
+   for path,expected in [('app.py','Sie hat wenig Platz'),('pages/6_KI_im_Unternehmen.py','Er zerlegt die Rechnung')]:
     with self.subTest(page=path):
-     app=AppTest.from_file(str(root/path),default_timeout=30).run()
+     app=AppTest.from_file(str(root/'app.py'),default_timeout=30).run()
+     if path!='app.py':app.switch_page(path).run()
      self.assertFalse(app.exception)
      self.assertFalse(app.get('help_info'))
      rendered='\n'.join(str(item.value) for item in app.markdown)

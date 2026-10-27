@@ -1,9 +1,10 @@
+from flightlab.ui import lab_header
 import numpy as np
 import pandas as pd
 import streamlit as st
 from flightlab.search import text_search
 st.set_page_config(page_title='Flight · Evidenzstudio',layout='wide')
-st.title('📐 Evidenzstudio: Auch die schönste Hypothese braucht Zahlen')
+lab_header('Eine Verbesserung mit Daten prüfen', 'Wähle unten eine von zwei getrennten Aufgaben: Suchtreffer bewerten oder eine Kampagne mit einem Gruppenvergleich untersuchen.', 'Kennzahlen zu einer passenden Datengrundlage. Die Aufgaben sind unabhängig voneinander.', 'Schritt 7 · Die Wirkung messen')
 a,b=st.tabs(['Amazon ESCI · Suchrelevanz','Ökonometrie · Kampagnenmessung'])
 with a:
  st.write('Lade eine zusammengeführte ESCI-Teilmenge mit query_id, query, product_title und esci_label. Produktmetadaten müssen innerhalb desselben Datensatzes über product_id und product_locale verknüpft sein.')

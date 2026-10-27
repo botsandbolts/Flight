@@ -16,3 +16,7 @@ gatherUsageStats = false
 [runner]
 # All user-facing content is rendered explicitly. Never print UI return objects.
 magicEnabled = false
+
+[client]
+# The guided story provides its own navigation.
+showSidebarNavigation = false

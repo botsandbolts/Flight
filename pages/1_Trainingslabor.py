@@ -1,3 +1,4 @@
+from flightlab.ui import lab_header
 import json
 import pandas as pd
 import streamlit as st
@@ -6,8 +7,7 @@ from flightlab.benchmark import run,run_sessions
 from flightlab.recommend import rank
 
 st.set_page_config(page_title='Flight · Trainingslabor',page_icon='🧪',layout='wide')
-st.title('🧪 Trainingslabor: Der Algorithmus muss liefern')
-st.write('Hier werden Modelle wirklich angepasst und auf zurückgehaltenen Ereignissen gemessen. Der Bestseller bekommt denselben Test wie der Transformer. Vetternwirtschaft gibt es nur im Produktgraphen.')
+lab_header('Welche Empfehlungen treffen besser?', 'Vergleiche Verfahren auf zurückgehaltenen Artikelkontakten. Starte mit dem künstlichen Funktionstest oder lade passende öffentliche Daten.', 'Gemessene Trefferquoten, Rangfolgen und Laufzeiten eines tatsächlich ausgeführten Trainingslaufs.', 'Schritt 3 · Sinnvoll weiterempfehlen')
 source=st.selectbox('Unabhängiger Datensatz',['Synthetischer Funktionstest','Retailrocket','REES46','Amazon Reviews 2023','Amazon-M2'])
 limit=st.slider('Maximal eingelesene Zeilen',1000,200000,20000,1000)
 events=None;session_rows=None
@@ -23,6 +23,8 @@ else:
   except Exception as e:st.error(str(e))
 if events is not None or session_rows is not None:
  if events is not None: st.write(f'{len(events):,} Ereignisse · {events.user.nunique():,} Kunden · {events.item.nunique():,} Artikel');st.dataframe(events.head(8),hide_index=True)
+ with st.expander('Die Verfahren kurz erklärt'):
+  st.write('Popularität: häufige Artikel. ItemKNN: ähnliche Interaktionsmuster. Markov: Übergänge zum nächsten Artikel. BERT4Rec/SASRec: Artikelreihenfolgen mit Transformern. LightGCN: ein Netz aus Nutzern und Artikeln.')
  names=st.multiselect('Modelle',['Popularität','ItemKNN','Markov','BERT4Rec','SASRec','LightGCN'],default=['Popularität','ItemKNN','Markov'])
  epochs=st.slider('Epochen für neuronale Modelle',1,20,2);cases=st.slider('Testfälle',50,1000,200,50)
  st.caption('Optional: pip install -r requirements-ml.txt. Vollkatalog-Auswertung kostet bei großen Katalogen Zeit. GUI-Training auf kleine Teilmengen begrenzen.')
@@ -35,7 +37,7 @@ if events is not None or session_rows is not None:
   except Exception as e:st.error('Training abgebrochen: '+str(e))
 if 'benchmark' in st.session_state:
  report,models,test_cases=st.session_state['benchmark'];st.caption('Letzter ausgeführter Lauf: '+report['source']+' · Fingerprint '+report['fingerprint'][:16])
- st.dataframe(pd.DataFrame(report['results']),hide_index=True);st.bar_chart(pd.DataFrame(report['results']).set_index('Modell')[['Recall@10','NDCG@10']])
+ st.dataframe(pd.DataFrame(report['results']).rename(columns={'training_seconds':'Training (Sekunden)','evaluation_seconds':'Auswertung (Sekunden)','eligible_cases':'Auswertbare Fälle','cold_targets':'Neue Zielartikel','catalog_size':'Artikel im Training','coverage':'Katalogabdeckung'}),hide_index=True);st.bar_chart(pd.DataFrame(report['results']).set_index('Modell')[['Recall@10','NDCG@10']])
  st.download_button('📥 Vollständiges Laufprotokoll',json.dumps(report,ensure_ascii=False,indent=2),'flight_benchmark.json','application/json')
  model=st.selectbox('Eine Empfehlung untersuchen',list(models));history,target=test_cases[0]
  st.write('Historie:', ' → '.join(history));st.write('Tatsächlicher nächster Artikel:',target)

@@ -1,10 +1,10 @@
+from flightlab.ui import lab_header
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 st.set_page_config(page_title='Flight · KI Business Case',layout='wide',page_icon='💶')
-st.title('💶 Der KI-Business-Case: Der Bot bekommt auch eine Kostenstelle')
-st.write('Die Geschäftsführung fragt nach dem Nutzen. „Wir haben jetzt einen Agenten“ zählt beim CFO ungefähr wie „wir haben jetzt einen Drucker“.')
+lab_header('Lohnt sich der KI-Pilot wirtschaftlich?', 'Berechne ein Szenario aus Arbeitszeit, Prüfaufwand, tatsächlicher Nutzung und Kosten. Die Eingaben sind Annahmen, keine gemessenen Einsparungen.', 'Einen monatlichen Nettonutzen unter deinen Annahmen und die einfache Amortisationsdauer.', 'Schritt 8 · Den nächsten Pilot planen')
 a,b=st.columns(2)
 with a:
  tasks=st.slider('Vorgänge pro Monat',100,100000,10000,100)

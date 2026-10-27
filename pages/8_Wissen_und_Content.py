@@ -1,10 +1,10 @@
+from flightlab.ui import lab_header
 from pathlib import Path
 import pandas as pd
 import streamlit as st
 from flightlab.organisation import retrieve,HANDBOOK
 st.set_page_config(page_title='Flight · Wissensstudio',layout='wide',page_icon='📚')
-st.title('📚 Unternehmenswissen statt KI-Gedächtnistheater')
-st.write('Ein Kunde fragt nach seiner verspäteten Bestellung. Die KI darf eine Antwort vorbereiten. Einen erfundenen Zustelltag darf sie nicht mit Geschenkband versehen.')
+lab_header('Eine Regel finden und einen Text vorbereiten', 'Suche zuerst im kleinen fiktiven Handbuch. Darunter kannst du Produkttexte aus eingegebenen Angaben vorbereiten.', 'Gefundene Quellen und regelbasierte Textvarianten. Hier läuft kein Sprachmodell im Hintergrund.', 'Schritt 6 · Das Unternehmen abstimmen')
 query=st.text_input('Frage an das fiktive Handbuch','Was tun bei Lieferverzögerung und fehlendem Zustelltermin?')
 if st.button('Quellen suchen'):
  results=retrieve(query)

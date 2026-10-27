@@ -1,0 +1,391 @@
+{
+  "version": 3,
+  "title": "Flight · Annas Einkauf verständlich erklärt",
+  "slides": [
+    {
+      "title": "Ein Einkauf. Sechs Entscheidungen.",
+      "layout": "cover",
+      "takeaway": "Anna soll das passende Produkt finden. Der Shop soll daran wirtschaftlich arbeiten.",
+      "notes": "Fiktiver Shop und KI-generierte Illustration. Alle Zahlen in den folgenden Rechenbeispielen sind ausdrücklich Annahmen. Diese Präsentation erklärt Entscheidungslogik, keine nachgewiesene Umsatzsteigerung."
+    },
+    {
+      "title": "Annas Wunsch und die Aufgabe des Shops",
+      "lead": "„Eine kleine schwarze Kaffeemaschine. Höchstens 150 €.“",
+      "layout": "table",
+      "headers": [
+        "Anna braucht",
+        "Der Shop muss entscheiden"
+      ],
+      "rows": [
+        [
+          "Ein passendes Produkt",
+          "Welche Treffer zeigen wir?"
+        ],
+        [
+          "Eine hilfreiche Auswahl",
+          "Was empfehlen wir danach?"
+        ],
+        [
+          "Eine verlässliche Zusage",
+          "Passen Kosten, Bestand und Lieferauskunft?"
+        ]
+      ],
+      "widths": [
+        450,
+        686
+      ],
+      "takeaway": "Ein verständlicher Kundenwunsch verbindet Produktauswahl und betriebliche Entscheidungen.",
+      "note": "Ein fiktiver Einkauf führt durch die gesamte Präsentation."
+    },
+    {
+      "title": "Die Geschichte hat eine klare Reihenfolge",
+      "layout": "table",
+      "headers": [
+        "Entscheidung",
+        "Die Frage dahinter"
+      ],
+      "rows": [
+        [
+          "1 · Finden",
+          "Was passt zu Annas Wunsch?"
+        ],
+        [
+          "2 · Empfehlen",
+          "Was könnte als Nächstes sinnvoll sein?"
+        ],
+        [
+          "3 · Rechnen",
+          "Wie viel bleibt nach den Kosten übrig?"
+        ],
+        [
+          "4 · Rabatt entscheiden",
+          "Verändert der Gutschein den Kauf genug?"
+        ],
+        [
+          "5 · Abstimmen",
+          "Kann der Shop sein Versprechen erfüllen?"
+        ],
+        [
+          "6 · Prüfen",
+          "Hat die Änderung tatsächlich geholfen?"
+        ]
+      ],
+      "widths": [
+        380,
+        756
+      ],
+      "takeaway": "Erst die Geschäftsfrage klären. Danach das passende Werkzeug wählen."
+    },
+    {
+      "title": "1 · Das passende Produkt finden",
+      "lead": "Annas Beschreibung und ihr Budget werden gemeinsam berücksichtigt.",
+      "layout": "table",
+      "headers": [
+        "Produkt im Beispiel",
+        "Preis",
+        "Passt zum Budget?"
+      ],
+      "rows": [
+        [
+          "Mokka Mini · klein, schwarz",
+          "89 €",
+          "Ja"
+        ],
+        [
+          "Barista Pro · groß, silber",
+          "349 €",
+          "Nein"
+        ],
+        [
+          "Crema Refurbished · schwarz",
+          "149 €",
+          "Ja"
+        ]
+      ],
+      "widths": [
+        640,
+        200,
+        296
+      ],
+      "takeaway": "Die Suche gleicht den Wunsch mit dem Katalog ab und hält das Budget ein.",
+      "note": "Die Story nutzt Wortabgleich. Eine semantische Suche ist eine optionale Vertiefung.",
+      "notes": "Fiktive Katalogwerte. Sentence Transformers und CLIP sind im separaten Suchstudio optional ausführbar. Hier wird keine echte semantische Modellqualität behauptet. Suchrelevanz-Datensatz: https://github.com/amazon-science/esci-data ."
+    },
+    {
+      "title": "2 · Sinnvoll weiterempfehlen",
+      "lead": "Anna hat die Mokka Mini angesehen. Welche Hilfe braucht sie jetzt?",
+      "layout": "table",
+      "headers": [
+        "Vorschlag",
+        "Wozu er helfen kann"
+      ],
+      "rows": [
+        [
+          "Eine andere Kaffeemaschine",
+          "Alternativen vergleichen"
+        ],
+        [
+          "Eine Kaffeemühle",
+          "Den Einkauf ergänzen"
+        ],
+        [
+          "Ein allgemeiner Bestseller",
+          "Beliebte Artikel entdecken"
+        ]
+      ],
+      "widths": [
+        490,
+        646
+      ],
+      "takeaway": "Empfehlungen reagieren auf beobachtete Interessen. Alternativen und Zubehör erfüllen unterschiedliche Zwecke.",
+      "note": "Manuell definierte Beispiele. Trainierte Modelle werden im Labor separat geprüft.",
+      "joke": "Zwei Kaffees? Vielleicht. Zwei Kaffeemaschinen? Bitte begründen."
+    },
+    {
+      "title": "3 · Was von 100 € übrig bleibt",
+      "layout": "contribution",
+      "takeaway": "24 € bleiben für weitere Kosten. Ein Rabatt von 10 € reduziert diesen Betrag auf 14 €.",
+      "note": "Separate 100-€-Beispielbestellung, netto ohne Umsatzsteuer. Fixkosten fehlen.",
+      "notes": "Eigenständiges 100-Euro-Rechenbeispiel, kein behaupteter Preis der Mokka Mini. 100 - 50 - 6 - 8 - 12 = 24. Retouren sind eine pauschale erwartete Kostenposition, kein separates Rückerstattungsmodell."
+    },
+    {
+      "title": "4 · Wann sich ein Gutschein lohnt",
+      "lead": "Eine hohe Kaufchance allein rechtfertigt keinen Rabatt.",
+      "layout": "table",
+      "headers": [
+        "Erfundener Fall",
+        "Ohne Gutschein",
+        "Mit Gutschein",
+        "Zusatzbeitrag je Kontakt"
+      ],
+      "rows": [
+        [
+          "A · kauft oft ohnehin",
+          "60 %",
+          "62 %",
+          "−5,60 €"
+        ],
+        [
+          "B · reagiert stärker",
+          "10 %",
+          "25 %",
+          "+3,30 €"
+        ]
+      ],
+      "widths": [
+        400,
+        225,
+        225,
+        286
+      ],
+      "takeaway": "Der zusätzliche Beitrag berücksichtigt auch Gutscheine für ohnehin stattfindende Käufe.",
+      "note": "Annahme: 40 € Beitrag je Kauf, 10 € Gutschein, 0,20 € Kontaktkosten.",
+      "notes": "Formel je Kontakt: (p1-p0)*40 - p1*10 - 0.2. Potenzielle Kaufwahrscheinlichkeiten sind erfunden und bekannt. Echte individuelle Gegeneffekte sind nicht beobachtbar. Criteo untersucht Werbung und liefert keinen gemessenen Gutscheineffekt für diesen Shop. https://huggingface.co/datasets/criteo/criteo-uplift"
+    },
+    {
+      "title": "5 · Der Bestand begrenzt das Versprechen",
+      "lead": "Anna fragt nach der Lieferung. Der Einkauf prüft zuerst die verfügbare Ware.",
+      "layout": "stock",
+      "takeaway": "Beim angenommenen Bedarf fehlen 100 Stück für die sieben Tage. Der konkrete Liefertermin bleibt ungeklärt.",
+      "note": "Annahme: 40 Stück Tagesbedarf und sieben Tage Lieferzeit. Keine reale Bestandsprognose."
+    },
+    {
+      "title": "Welche Aufgabe welches Werkzeug übernimmt",
+      "layout": "table",
+      "headers": [
+        "Aufgabe",
+        "Passendes Werkzeug",
+        "Beispielausgabe"
+      ],
+      "rows": [
+        [
+          "Artikel vorschlagen",
+          "Empfehlungsverfahren",
+          "Eine passende Mühle"
+        ],
+        [
+          "Kosten und Bestand rechnen",
+          "Definierte Rechenfunktion",
+          "24 € Beitrag; 100 Stück Lücke"
+        ],
+        [
+          "Eine Auskunft formulieren",
+          "Sprachmodell mit Fakten",
+          "Ein Antwortentwurf"
+        ],
+        [
+          "Schritte verbinden",
+          "Ein festgelegter Ablauf",
+          "Ein prüfbares Protokoll"
+        ]
+      ],
+      "widths": [
+        330,
+        380,
+        426
+      ],
+      "takeaway": "Ein Sprachmodell kann erklären und formulieren. Zahlen und bestätigte Fakten kommen aus den zuständigen Werkzeugen.",
+      "note": "Flight nutzt lokal einen festen Ablauf. Die optionale API formuliert Texte."
+    },
+    {
+      "title": "Ein gemeinsamer Auftrag für das Team",
+      "layout": "table",
+      "headers": [
+        "Rolle",
+        "Beitrag zur Entscheidung"
+      ],
+      "rows": [
+        [
+          "Finanzen",
+          "Prüft den Beitrag der Beispielbestellung."
+        ],
+        [
+          "Einkauf",
+          "Prüft Bestand und Lieferfähigkeit."
+        ],
+        [
+          "Kundenservice",
+          "Verwendet die bestätigten Informationen für eine Antwort."
+        ]
+      ],
+      "widths": [
+        350,
+        786
+      ],
+      "takeaway": "Das Team erhält einen nachvollziehbaren Vorschlag. Es bestätigt Lieferfähigkeit und weitere Aktionen.",
+      "note": "Copilot: unterstützt Menschen. Agent: kann Schritte und Werkzeuge wählen. Flight demonstriert aktuell einen festen Workflow."
+    },
+    {
+      "title": "Wo ChatGPT und Claude helfen können",
+      "layout": "quote",
+      "lead": "Aus geprüften Fakten wird eine verständliche Antwort.",
+      "quote": "„Die Maschine passt zu deinen Angaben. Den konkreten Liefertermin prüfen wir noch und bestätigen ihn dir anschließend.“",
+      "takeaway": "Das Sprachmodell formuliert einen Entwurf. Der bestätigte Liefertermin muss aus einem zuständigen System kommen.",
+      "note": "Vorlagenbeispiel, kein Live-Modellaufruf. Optionale OpenAI-/Anthropic-API-Anbindungen benötigen eigene Schlüssel.",
+      "notes": "Die Produktfamilien ChatGPT/OpenAI und Claude/Anthropic werden ohne Qualitätsrangliste beschrieben. Im Code sind OpenAI Responses API und Anthropic Messages API für Textentwürfe vorhanden. Sie wählen hier keine Tools autonom. Quellen: https://developers.openai.com/api/docs/guides/tools ; https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works"
+    },
+    {
+      "title": "6 · Eine Verbesserung braucht eine Gegenprobe",
+      "layout": "experiment",
+      "takeaway": "Vier zusätzliche Käufe bei 1.000 Personen je Gruppe belegen in diesem Lehrbeispiel noch keinen positiven Effekt.",
+      "note": "Erfundene Zahlen. Ungefährer 95-%-Bereich für den Unterschied: −1,02 bis +1,82 Prozentpunkte.",
+      "notes": "Kontrolle: 25/1000 = 2,5 %. Variante: 29/1000 = 2,9 %. Differenz 0,4 Prozentpunkte. Wald-SE = sqrt(.025*.975/1000 + .029*.971/1000). Gerundete Lehrzahlen, keine erhobene Studie. Reale Experimente brauchen Randomisierung und einen vorab definierten Analyseplan."
+    },
+    {
+      "title": "Was Flight heute tatsächlich zeigt",
+      "layout": "table",
+      "headers": [
+        "Bereich",
+        "Projektstand"
+      ],
+      "rows": [
+        [
+          "Geführte Geschichte",
+          "Fiktive Daten und nachvollziehbare Rechnungen."
+        ],
+        [
+          "Trainings- und Suchlabore",
+          "Ausführbare Methoden und dokumentierte Tests."
+        ],
+        [
+          "Bisherige öffentliche Datenversuche",
+          "Noch kein belastbarer Empfehlungsgewinn."
+        ],
+        [
+          "OpenAI-/Anthropic-Anbindungen",
+          "Optional, ohne Schlüssel nicht live getestet."
+        ]
+      ],
+      "widths": [
+        480,
+        656
+      ],
+      "takeaway": "Das Portfolio zeigt die Umsetzung einer Geschäftsfrage. Der nächste Produktionsschritt wäre ein begrenzter Pilot mit Messung.",
+      "note": "Synthetische Tests, Amazon-Präfixtest und Criteo-Validierung sind getrennt dokumentiert."
+    },
+    {
+      "title": "Technischer Anhang: Methoden nach Aufgabe",
+      "layout": "table",
+      "headers": [
+        "Aufgabe",
+        "Verfahren im Projekt",
+        "Prüffrage"
+      ],
+      "rows": [
+        [
+          "Suche",
+          "Wortvergleich, Sentence Transformers, CLIP",
+          "Passen die Treffer zur Anfrage?"
+        ],
+        [
+          "Empfehlungen",
+          "Baselines, BERT4Rec, SASRec, LightGCN",
+          "Treffen wir den nächsten Artikel?"
+        ],
+        [
+          "Zusätzliche Werbewirkung",
+          "T-Learner auf geeigneten Treatmentdaten",
+          "Hilft die Auswahl gegenüber Zufall?"
+        ],
+        [
+          "Betrieb und Auskunft",
+          "Rechenfunktionen, Quellensuche, optionale LLMs",
+          "Sind Zahlen und Belege richtig?"
+        ],
+        [
+          "Wirkungsprüfung",
+          "A/B-Lehrbeispiel; separates Ökonometrie-Labor",
+          "Ist der Unterschied belastbar?"
+        ]
+      ],
+      "widths": [
+        280,
+        490,
+        366
+      ],
+      "takeaway": "Die Methoden beantworten verschiedene Fragen. Kein einzelnes Modell ersetzt die gesamte Entscheidungskette.",
+      "note": "Recall: Trefferquote. NDCG: Güte der Reihenfolge. LLM: großes Sprachmodell. Kompakte Implementierungen, keine Produktionsnachweise."
+    },
+    {
+      "title": "Technischer Anhang: Öffentliche Datenquellen",
+      "layout": "table",
+      "headers": [
+        "Quelle",
+        "Wofür sie separat genutzt wird"
+      ],
+      "rows": [
+        [
+          "Retailrocket",
+          "Zeitliche Artikelkontakte und Transaktionen"
+        ],
+        [
+          "REES46",
+          "Verhaltensdaten aus weiteren Shopkategorien"
+        ],
+        [
+          "Amazon-M2",
+          "Nächster Artikel einer Einkaufssitzung"
+        ],
+        [
+          "Amazon Reviews 2023",
+          "Rezensionen und Produktinformationen"
+        ],
+        [
+          "Amazon ESCI",
+          "Relevanz von Suchanfragen und Produkten"
+        ],
+        [
+          "Criteo Uplift",
+          "Werbung im Vergleich zu keiner Werbung"
+        ]
+      ],
+      "widths": [
+        420,
+        716
+      ],
+      "takeaway": "Die Quellen bleiben getrennte Aufgaben. Sie bilden keinen gemeinsamen Kunden und keinen gemeinsamen Shop ab.",
+      "note": "Margen, Bestände und Lieferzeiten des Beispielshops sind Annahmen.",
+      "notes": "Quellen: https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset ; https://rees46.com/en/datasets ; https://github.com/HaitaoMao/Amazon-M2-Session-Recommendation ; https://amazon-reviews-2023.github.io/ ; https://github.com/amazon-science/esci-data ; https://huggingface.co/datasets/criteo/criteo-uplift . Zugang und jeweilige Nutzungsbedingungen vor Einsatz prüfen. Criteo: CC-BY-NC-SA-4.0, nichtuniform subsampelt. Kosten- und Bestandsdaten fehlen in den gewählten öffentlichen Verhaltensdaten."
+    }
+  ]
+}

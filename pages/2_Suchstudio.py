@@ -1,9 +1,9 @@
+from flightlab.ui import lab_header
 import pandas as pd
 import streamlit as st
 from flightlab.search import text_search,image_search
 st.set_page_config(page_title='Flight · Suchstudio',page_icon='🔎',layout='wide')
-st.title('🔎 Das „Du weißt schon“-Suchstudio')
-st.write('Kunden beschreiben Wünsche. Dein Katalog beschreibt Artikel. Hier treffen sich die beiden, ohne Familienberatung.')
+lab_header('Produkte mit Text oder Bildern suchen', 'Prüfe, welche Katalogprodukte zu einer Beschreibung passen. Beginne mit dem kleinen Beispielkatalog und dem Wortvergleich.', 'Eine sortierte Trefferliste. Sprach- und Bildmodelle sind optionale Vertiefungen mit zusätzlichem Download.', 'Schritt 2 · Das passende Produkt finden')
 mode=st.radio('Werkzeug',['TF-IDF: schnelle Textbaseline','Sentence Transformer: semantischer Text','CLIP: Text findet Bilder'])
 query=st.text_input('Suchwunsch','kompakte schwarze Kaffeemaschine für eine kleine Küche')
 if mode.startswith('CLIP'):

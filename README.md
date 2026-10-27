@@ -1,8 +1,8 @@
-# ✈️ FLIGHT – Kaufrausch & Kassensturz
+# FLIGHT · Annas Einkauf verständlich erklärt
 
-**Anna sucht Kaffee. Der CFO sucht sein Geld.** Ein deutschsprachiges E-Commerce-Portfolio von Amit Steinberg.
+Ein deutschsprachiges E-Commerce-Portfolio von Amit Steinberg. Anna sucht eine kleine Kaffeemaschine. Die Geschichte erklärt die Entscheidungen des Shops an diesem einen Einkauf.
 
-![Projektposter](assets/flight_poster.jpg)
+![Anna im Beispielshop](assets/story_hero.jpg)
 
 ## Direkt im Codespace starten
 
@@ -22,13 +22,17 @@ python -m pip install -r requirements-ml.txt
 
 ## Oberfläche und Geschichte
 
-Die Startseite erzählt acht Kapitel in einfacher Sprache, mit Geschäftsterminologie, technischen Erklärungen und Humor. Die zusätzlichen Arbeitsbereiche führen tatsächliche Berechnungen aus:
+Die Startseite hat eine geführte Reihenfolge mit Vor-/Zurück-Navigation. Sie beginnt bei Annas Wunsch und erklärt sechs Entscheidungen: **Finden, Empfehlen, Rechnen, Rabatt entscheiden, Abstimmen und Prüfen**. Einstieg und Fazit rahmen diese Schritte ein.
+
+Jeder Schritt zeigt ein konkretes Beispiel und eine erklärte Entscheidung. Geschäftliche Kennzahlen und technische Methoden sind optional aufklappbar. Vertiefende Werkzeuge stehen hinter einem eigenen Navigationsabschnitt. Die Präsentation folgt derselben Geschichte. Die letzten zwei Folien sind der technische Anhang.
+
+Die zusätzlichen Arbeitsbereiche führen tatsächliche Berechnungen aus:
 
 - **Trainingslabor:** Popularität, ItemKNN, Markov, kompakte BERT4Rec-/SASRec-artige Transformer und LightGCN mit Training und Testmetriken.
 - **Suchstudio:** TF-IDF, optional mehrsprachige Sentence Transformers und CLIP-Text-Bild-Retrieval aus hochgeladenen Katalogbildern.
 - **Marketinglabor:** T-Learner auf Criteo-Treatmentdaten, stratifizierter Train/Test-Split, IPW-Upliftkurve und AUUC oberhalb Zufall.
 - **Evidenzstudio:** ESCI-Kandidatenranking und Difference-in-Differences per OLS mit HC3- oder Cluster-Standardfehlern.
-- **Vorstellung:** Projektposter, 15 Folien, herunterladbare PowerPoint-Datei und gespeicherte Benchmarkprotokolle.
+- **Folien und Nachweise:** 15 neu geschriebene Folien, herunterladbare PowerPoint-Datei und getrennte Benchmarkprotokolle.
 
 Story-Simulationen bleiben ausdrücklich als solche gekennzeichnet. Keine KI-Methode bekommt Ergebnisse zugeschrieben, die eine Heuristik berechnet hat.
 
@@ -81,14 +85,18 @@ Globaler zeitlicher 80/20-Split für Ereignisdaten. Vokabular, Graph und Modellp
 
 Die neuronalen Modelle sind kompakte, eigenständige Implementierungen zur Portfolio-Demonstration. BERT nutzt Einzelmaskenrekonstruktion. SAS nutzt kausale Attention und nächste Artikel. LightGCN lernt mit BPR auf einem User-Item-Graphen; die Sessioninferenz mittelt Itemvektoren. Keine Behauptung einer paper-exakten Reproduktion oder Produktionsskalierung. Vollkatalog-Softmax und Auswertung sind für kleine bis mittlere Teilmengen gedacht. Hyperparameter nur auf einem zusätzlichen Validierungssplit auswählen, nicht auf den hier berichteten Testfällen.
 
-## Deckungsbeitrag
+## Rechenbeispiele und Aussagegrenzen
 
-Nettowerte ohne Umsatzsteuer. Erlös nach Rabatt/Retouren minus Wareneinsatz verkaufter Ware minus variable Abwicklung/Retourenkosten minus Werbung. Retourenware gilt im Szenario als wiederverkaufbar. Fixkosten fehlen. DB ist kein Unternehmensgewinn. Inkrementeller DB der Marketing-Simulation: `(p1-p0) × 40 € − p1 × Rabatt − Kontaktkosten`. Alle Kosteneingaben sind sichtbare Annahmen.
+Die Kostenrechnung verwendet eine separate runde Beispielbestellung von 100 € netto: 50 € Ware, 6 € Versand/Zahlung, 8 € erwartete Retourenkosten und 12 € Werbung. Damit bleiben 24 € vor Fixkosten. Ein Rabatt von 10 € lässt 14 € übrig. Das ist keine Behauptung über den zuvor gezeigten Artikelpreis oder echte Einkaufsmargen.
+
+Die Gutscheinrechnung verwendet bekannte erfundene Wahrscheinlichkeiten: `(p1-p0) × 40 € − p1 × Gutschein − 0,20 € Kontaktkosten`. Bei 10 € Gutschein ergeben die Fälle 60 %/62 % und 10 %/25 % Zusatzbeiträge von −5,60 € beziehungsweise +3,30 € je Kontakt. Echte individuelle Gegenfälle sind nicht beobachtbar.
+
+Im Bestandsbeispiel stehen 180 vorhandene Stück einem angenommenen Bedarf von 40 × 7 = 280 Stück gegenüber. Die Lücke beweist keinen individuellen Liefertermin. Im A/B-Lehrbeispiel sind 25/1000 und 29/1000 erfundene Käufe; deren Differenz von 0,4 Prozentpunkten belegt bei dieser Gruppengröße noch keinen positiven Effekt.
 
 ## Struktur
 
 ```text
-app.py                  Deutsche Story mit acht Kapiteln und zwölf zusätzlichen Unternehmensgeschichten
+app.py                  Geführte Geschichte: Einstieg, sechs Entscheidungen und Fazit
 pages/                  Training, Suche, Marketing, Ökonometrie, Präsentation
 flightlab/              Datenadapter, Baselines, neuronale Modelle, Evaluation
 assets/                 Projektposter, Präsentation und Folien
@@ -100,9 +108,9 @@ tests/                  GUI-, Daten-, Metrik- und Modellprüfungen
 API-Schlüssel sind nicht erforderlich. Sentence Transformers/CLIP laden öffentliche Gewichte beim ersten Aufruf. Die App sendet Uploads nicht an eine Inferenz-API. Verarbeitung und Hosting sind im Betrieb dennoch datenschutzrechtlich zu prüfen. Für eine öffentliche Demo nur geeignete öffentliche oder künstliche Daten verwenden.
 
 
-## Staffel 2: KI im Unternehmen
+## Weitere Anwendungen im Unternehmen
 
-Zwölf Episoden verbinden konkrete Geschäftsprobleme mit Verantwortlichen, Datenbedarf und Erfolgsmessung. Vier neue Arbeitsbereiche:
+Zwölf optionale Fallkarten vertiefen Geschäftsprobleme anderer Abteilungen. Sie ergänzen die Geschichte, ohne den Einstieg zu unterbrechen. Weitere Arbeitsbereiche:
 
 - **KI im Unternehmen:** Einkauf, Service, CRM, Content, Pricing, Recht, Wissensmanagement und Führung. Begriffe AI/KI, generative KI, Copilot, Agent, Workflow und RAG auf drei Erklärungsebenen.
 - **Agenten-Kommandozentrale:** Fester lokaler Ablauf mit realen DB-/Meldebestand-Rechnungen, Handbuch-Retrieval und Entscheidungsprotokoll. Kein autonomer LLM-Agent und keine externen Aktionen.

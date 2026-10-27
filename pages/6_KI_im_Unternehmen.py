@@ -9,8 +9,13 @@ p=Path(__file__).resolve().parents[1]/'assets/organisation_poster.jpg'
 if p.exists():st.image(str(p),width='stretch')
 case=st.selectbox('Episode auswählen',[x['name'] for x in USE_CASES]);c=next(x for x in USE_CASES if x['name']==case)
 st.caption(c['role']+' · '+c['agent']);st.header(c['problem'])
-a,b,d=st.tabs(['🧑 Ohne Fachchinesisch','💼 Business Case','🔬 Maschinenraum'])
-a.write(c['simple']);b.write(c['business']);d.write(c['tech'])
+plain_tab,business_tab,technical_tab=st.tabs(['🧑 Ohne Fachchinesisch','💼 Business Case','🔬 Maschinenraum'])
+with plain_tab:
+ st.write(c['simple'])
+with business_tab:
+ st.write(c['business'])
+with technical_tab:
+ st.write(c['tech'])
 st.success('**Die nächste Entscheidung:** '+c['decision']);st.info('**Kaffeepause:** '+c['joke'])
 x,y=st.columns(2)
 with x:st.subheader('Welche Daten brauchen wir?');st.write(c['data'])

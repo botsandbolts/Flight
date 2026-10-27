@@ -34,8 +34,13 @@ def chart(fig):
  st.plotly_chart(fig,width='stretch')
 
 def explain(simple,business,tech,joke):
- a,b,c=st.tabs(['🧑 Einfach erklärt','💼 Geschäftlich','🔬 Technisch'])
- a.write(simple);b.write(business);c.write(tech)
+ plain_tab,business_tab,technical_tab=st.tabs(['🧑 Einfach erklärt','💼 Geschäftlich','🔬 Technisch'])
+ with plain_tab:
+  st.write(simple)
+ with business_tab:
+  st.write(business)
+ with technical_tab:
+  st.write(tech)
  st.info('☕ Kaffeepause: '+joke)
 
 def cards(frame):

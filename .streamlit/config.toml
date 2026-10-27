@@ -12,3 +12,7 @@ port = 8501
 
 [browser]
 gatherUsageStats = false
+
+[runner]
+# All user-facing content is rendered explicitly. Never print UI return objects.
+magicEnabled = false
